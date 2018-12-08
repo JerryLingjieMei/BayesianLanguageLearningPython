@@ -43,7 +43,7 @@ class TestPosterior(unittest.TestCase):
         hs_new_on_hs_approx(self.hypotheses, self.prior, self.m, self.eps)
 
     def test_full_small(self):
-        run.main(.5, 1, .1)
+        run.main(.01, 3, .05)
 
     def test_full_large(self):
         run.main(.5, 4, .1)
