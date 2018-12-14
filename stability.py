@@ -8,15 +8,14 @@ def main(log, alpha, m, eps):
     np_file_name = "output/{:.3f}_{:02d}_{:.3f}.npy".format(alpha, m, eps)
     data = np.load(np_file_name)
     lambda_2 = abs(np.sort(np.linalg.eigvals(data))[-2])
-    norm = np.linalg.norm(data)
-    log["{:.3f}_{:02d}_{:.3f}".format(alpha, m, eps)] = dict(lambda_2=lambda_2, stability=norm)
+    log["{:.3f}_{:02d}_{:.3f}".format(alpha, m, eps)] = dict(lambda_2=lambda_2, stability=1 / (1 - lambda_2))
 
 
 if __name__ == '__main__':
     worker_args = []
     log = Manager().dict()
     for alpha in [.5, .01]:
-        for eps in [.05, .01]:
+        for eps in [.05, .001]:
             for m in range(1, 11):
                 worker_args.append((log, alpha, m, eps))
 

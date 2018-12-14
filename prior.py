@@ -27,4 +27,4 @@ def get_hypotheses():
 
 
 def get_prior(alpha):
-    return np.concatenate((np.full((4,), (1 - alpha) / 4), np.full((256,), alpha / 256)))
+    return np.concatenate((np.full((4,), alpha / 4), np.full((256,), (1 - alpha) / 256)))
