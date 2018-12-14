@@ -8,7 +8,9 @@ def main(log, alpha, m, eps):
     np_file_name = "output/{:.3f}_{:02d}_{:.3f}.npy".format(alpha, m, eps)
     data = np.load(np_file_name)
     lambda_2 = abs(np.sort(np.linalg.eigvals(data))[-2])
-    log["{:.3f}_{:02d}_{:.3f}".format(alpha, m, eps)] = dict(lambda_2=lambda_2, stability=1 / (1 - lambda_2))
+    diags = np.diag(data)
+    stability = np.sum(diags[:4]) / np.sum(diags[4:])
+    log["{:.3f}_{:02d}_{:.3f}".format(alpha, m, eps)] = dict(lambda_2=lambda_2, stability=stability)
 
 
 if __name__ == '__main__':

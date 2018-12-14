@@ -5,7 +5,7 @@ PATTERNS = [0, 1, 2, 3]
 
 PATTERNS_MATRIX = np.identity(4, dtype=np.bool)
 
-N_SAMPLES = 260 * 2000
+N_SAMPLES = 260 * 4000
 
 
 def make_cartesian_product(patterns_matrices, m):
