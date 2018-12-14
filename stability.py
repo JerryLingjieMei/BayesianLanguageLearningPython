@@ -9,7 +9,7 @@ def main(log, alpha, m, eps):
     data = np.load(np_file_name)
     lambda_2 = abs(np.sort(np.linalg.eigvals(data))[-2])
     diags = np.diag(data)
-    stability = np.sum(diags[:4]) / np.sum(diags[4:])
+    stability = np.mean(diags[:4]) / np.mean(diags[4:])
     log["{:.3f}_{:02d}_{:.3f}".format(alpha, m, eps)] = dict(lambda_2=lambda_2, stability=stability)
 
 
