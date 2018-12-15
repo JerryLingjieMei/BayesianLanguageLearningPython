@@ -1,5 +1,6 @@
 from multiprocessing import Pool, cpu_count
 import numpy as np
+import matplotlib.pyplot as plt
 from prior import *
 from posterior import *
 
@@ -10,7 +11,14 @@ def main(alpha, m, eps):
     result = hs_new_on_hs(hypotheses, prior, m, eps)
     file_name = "output/{:.3f}_{:02d}_{:.3f}.npy".format(alpha, m, eps)
     np.save(file_name, result)
-    print(file_name + " generated")
+    plt.clf()
+    plt.figure()
+    np_file_name = "output/{:.3f}_{:02d}_{:.3f}.npy".format(alpha, m, eps)
+    data = np.load(np_file_name)
+    plt.matshow(data.T)
+    file_name = "output/{:.3f}_{:02d}_{:.3f}.png".format(alpha, m, eps)
+    plt.savefig(file_name)
+    print(file_name, " generated")
 
 
 if __name__ == '__main__':

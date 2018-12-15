@@ -7,6 +7,8 @@ PATTERNS_MATRIX = np.identity(4, dtype=np.bool)
 
 N_SAMPLES = 260 * 4000
 
+N_ITERATIONS = 100000
+
 
 def make_cartesian_product(patterns_matrices, m):
     result = np.zeros((len(patterns_matrices) ** m, m, 4), dtype=np.uint8)
